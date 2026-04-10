@@ -1,0 +1,24 @@
+type RSVPSubmission = 
+ record {
+   dietary: text;
+   email: text;
+   guestCount: nat;
+   name: text;
+   songRequest: text;
+ };
+type RSVPRecord = 
+ record {
+   dietary: text;
+   email: text;
+   guestCount: nat;
+   name: text;
+   songRequest: text;
+   submittedAt: int;
+ };
+service : {
+  getRSVPs: () -> (vec RSVPRecord) query;
+  submitRSVP: (submission: RSVPSubmission) -> (variant {
+                                                 err: text;
+                                                 ok: text;
+                                               });
+}
